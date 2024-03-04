@@ -11,7 +11,6 @@ class Vendor(models.Model):
         return self.user.username
     
 #product category
-
 class ProductCategory(models.Model):
     title = models.CharField(max_length=200)  
     detail =models.TextField(null=True)  
@@ -21,6 +20,8 @@ class ProductCategory(models.Model):
     
 #product
 class Product(models.Model):
+    category = models.ForeignKey(ProductCategory, on_delete=models.SET_NULL, null=True, related_name='category_product')
+    vendor  = models.ForeignKey(Vendor, on_delete=models.SET_NULL, null=True)
     title = models.CharField(max_length=200)
     detail = models.TextField(null=True)
     price = models.FloatField()
