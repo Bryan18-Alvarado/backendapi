@@ -13,12 +13,25 @@ Class-based views
 Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+    
+http post  http://127.0.0.1:8000/api/token/
+username=admin password=root
+
+http http://127.0.0.1:8000/api/vendors/ "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEwMjkyNzk2LCJpYXQiOjE3MTAyOTI0OTYsImp0aSI6IjUxZmU0YzUzYTMzMTRiNmI4MzM0YjE0NDdjYTEzNDY1IiwidXNlcl9pZCI6M30.kUXOc9M774vaqvC_c9iHHfc7f4OOMzQ4orz6Rm3djTY"
+
+
+http http://127.0.0.1:8000/api/token/refresh/ refresh=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxMDM3ODg5NiwiaWF0IjoxNzEwMjkyNDk2LCJqdGkiOiI2YTVhODlkMmYxZjM0MDZkOThiMTg3MTIzZjZlYTE4YiIsInVzZXJfaWQiOjN9.gNIUncxVIJyvBNVIpzAoqWeIem25x8rh0LVep5Zox8Y
+  
 """
 from django.contrib import admin
 from django.urls import path,include
-
+from rest_framework_simplejwt import views as jwt_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('main.urls')),
-    path('api-auth/', include('rest_framework.urls')), #funcionalidad de codigo, con permisos de administrador como si fuese django admin
+    
+    path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+    path('api-auth/', include('rest_framework.urls')),#funcionalidad de codigo, con permisos de administrador como si fuese django admin
+    
 ]
