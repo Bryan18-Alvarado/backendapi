@@ -12,3 +12,4 @@ admin.site.register(models.OrderItems)
 
 #viewset
 admin.site.register(models.CustomerAddress)
+admin.site.register(models.ProductRating)
