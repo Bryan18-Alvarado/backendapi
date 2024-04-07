@@ -49,4 +49,12 @@ class OrderItems(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     
     def __str__(self):
-        return self.product.title    
+        return self.product.title
+
+class CustomerAddress(models.Model):
+    customer = models.ForeignKey(Customer, on_delete= models.CASCADE, related_name='customer_adresses')      
+    address = models.TextField()
+    default_address = models.BooleanField(default=False)
+    
+    def __str__(self):
+        return self.address 
