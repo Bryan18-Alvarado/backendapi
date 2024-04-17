@@ -13,9 +13,13 @@ class VendorDetail(generics.RetrieveUpdateDestroyAPIView): #retrieve=retornar #R
     queryset = models.Vendor.objects.all()
     serializer_class = serializers.VendorDetailSerializer
         
-class ProductCategory(generics.ListAPIView):
+class CategoryList(generics.ListCreateAPIView):
     queryset = models.ProductCategory.objects.all()
-    serializer_class = serializers.ProductCategorySerializer
+    serializer_class = serializers.CategorySerializer
+    
+class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.ProductCategory.objects.all()
+    serializer_class = serializers.CategoryDetailSerializer    
     
 class ProductList(generics.ListCreateAPIView):
     queryset = models.Product.objects.all()

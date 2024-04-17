@@ -21,11 +21,23 @@ class VendorDetailSerializer(serializers.ModelSerializer):
         super(VendorDetailSerializer, self).__init__(*args, **kwargs)
         #self.Meta.depth = 1    
                
-class ProductCategorySerializer(serializers.ModelSerializer):
+class CategorySerializer(serializers.ModelSerializer):
         class Meta:
             model = models.ProductCategory
-            fields = ['title', 'detail']
+            fields = ['id','title', 'detail']
+            
+        def __init(self, *args, **kwargs):
+            super(CategorySerializer, self).__init__(*args, **kwargs)
+            #self.Meta.depth=1    
 
+class CategoryDetailSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = models.ProductCategory
+            fields = ['id','title', 'detail']
+            
+        def __init(self, *args, **kwargs):
+            super(CategoryDetailSerializer, self).__init__(*args, **kwargs)
+            #self.Meta.depth=1  
 class ProductListSerializer(serializers.ModelSerializer):
     product_ratings = serializers.StringRelatedField(many=True, read_only=True)
     class Meta:
