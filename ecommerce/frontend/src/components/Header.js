@@ -1,3 +1,4 @@
+import { Link} from 'react-router-dom';
 function Header(){
     return(
         <nav className="navbar navbar-expand-lg navbar-dark bg-success">
@@ -7,13 +8,13 @@ function Header(){
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a className="navbar-brand" href="#">Ecommerce</a>
+            <Link className="navbar-brand" to="/">Ecommerce</Link>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link" aria-current="page" href="#">Inicio</a>
+                <Link className="nav-link" aria-current="page" to="/">Inicio</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Categorias</a>
+                <Link className="nav-link" to="/categories">Categorias</Link>
               </li>
               {/* <li className="nav-item">
                 <a className="nav-link disabled">Disabled</a>
