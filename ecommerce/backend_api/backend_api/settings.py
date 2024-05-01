@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-from .db import POSTGRESQL
+from.db import POSTGRESQL
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&@d620lq(-_14&jmyl9!)w=1=*b*-*%#9o+*w&^hk@nnxo&4ff'
+SECRET_KEY = 'django-insecure-btzg=^e7xd1a=2k@c+1g+q++j_5s1shfo*8k0%++=v$+u%j7#^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,11 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    #packages
+    # packages
     'rest_framework',
     
-    #my App
+    #my app
     'main',
+    
+    
 ]
 
 MIDDLEWARE = [
@@ -80,7 +82,14 @@ WSGI_APPLICATION = 'backend_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = POSTGRESQL
+DATABASES =POSTGRESQL
+
+# {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
@@ -125,13 +134,23 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
+    'DEFAULT_PERMISSION_CLASSES':[
         'rest_framework.permissions.IsAuthenticated',
-    ],
-    #'DEFAULT_AUTHENTICATION_CLASSES':[
-     #   'rest_framework_simplejwt.authentication.JWTAuthentication'
-    #]
-    #'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    ]
+}
+
+# REST_FRAMEWORK = {
+#  'DEFAULT_AUTHENTICATION_CLASSES':[
+#         'rest_framework_simplejwt.authentication.JWTAuthentication'
+#     ]
+# }
+
+#REST_FRAMEWORK = {
+#     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+#     'PAGE_SIZE': 1
+# }
+
+REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'main.pagination.CustomPagination',
-    'PAGE_SIZE': 10
+    'PAGE_SIZE': 1
 }
