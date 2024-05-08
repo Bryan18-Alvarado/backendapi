@@ -15,13 +15,23 @@ import CategoryProducts from "./components/CategoryProducts";
 import AllProducts from "./components/AllProducts";
 import ProductDetail from "./components/ProductDetail";
 import Checkout from "./components/Checkout";
+import OrderSuccess from './components/OrderSuccess'
 
 //customer panel
 import Register from "./components/Customer/Register";
 import Login from "./components/Customer/Login"
 import Dashboard from "./components/Customer/Dashboard";
 import Orders from "./components/Customer/Orders";
-
+import OrderFailure from './components/OrderFailure'
+import WishList from "./components/Customer/Wishlist";
+import Profile from "./components/Customer/Profile";
+import ChangePassword from "./components/Customer/ChangePassword";
+import AddressList from "./components/Customer/AdressList";
+import AddAdress from "./components/Customer/AddAddress";
+import SellerLogin from "./components/seller/SellerLogin";
+import SellerRegister from "./components/seller/SellerRegister";
+import SellerDasboard from './components/seller/SellerDashboard'
+import SellerProducts from "./components/seller/SellerProducts";
 function App() {
   return (
     <>
@@ -34,12 +44,26 @@ function App() {
         <Route path="/category/:category_slug/:category_id" element={<CategoryProducts />} />
         <Route path="/product/:product_slug/:product_id" element={<ProductDetail />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/order/success" element={<OrderSuccess />} />
+        <Route path="/order/failure" element={<OrderFailure/>}/>
 
         {/* Customer Routes */}
         <Route path="/customer/register" element={<Register />} />
         <Route path="/customer/login" element={<Login />} />
         <Route path="/customer/dashboard" element={<Dashboard />} />
         <Route path="/customer/orders" element={<Orders />} />
+        <Route path="/customer/wishlist" element={<WishList />} />
+        <Route path="/customer/profile" element={<Profile/>}/>
+        <Route path="/customer/Change-password" element={<ChangePassword/>}/>
+        <Route path="/customer/addresses" element={<AddressList/>}/>
+        <Route path="/customer/add-address" element={<AddAdress/>}/>
+
+        {/* seller panel */}
+        <Route path="/seller/login" element={<SellerLogin/>}/>
+        <Route path="/seller/register" element={<SellerRegister/>}/>
+        <Route path="/seller/dashboard" element={<SellerDasboard/>}/>
+        <Route path="/seller/products" element={<SellerProducts/>}/>
+
       </Routes>
       <Footer />
 

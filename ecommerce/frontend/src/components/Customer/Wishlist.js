@@ -1,11 +1,12 @@
 import logo from "../../logo.svg"
 import { Link } from "react-router-dom"
 import SideBar from "./SideBar"
-function Orders(props) {
+function WishList(props) {
     return (
         <div className="container mt-4">
             <div className="row">
                 <div className="col-md-3 col-12 mb-2">
+
                     <SideBar />
                 </div>
                 <div className="col-md-9 col-12 mb-2">
@@ -17,7 +18,6 @@ function Orders(props) {
                                         <th>#</th>
                                         <th>Producto</th>
                                         <th>Precio</th>
-                                        <th>Estado</th>
                                         <th>Acción</th>
                                     </tr>
                                 </thead>
@@ -29,8 +29,7 @@ function Orders(props) {
                                             <p><Link>Django</Link></p>
                                         </td>
                                         <td>c$500.00</td>
-                                        <td><span className="text-success"><i className="fa fa-check-circle"></i>Completado</span></td>
-                                        <td><button className="btn btn-primary btn-sm">Descargas</button></td>
+                                        <td><button className="btn btn-danger btn-sm">Eliminar</button></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
@@ -39,8 +38,7 @@ function Orders(props) {
                                             <p><Link>Nest</Link></p>
                                         </td>
                                         <td>c$500.00</td>
-                                        <td><span className="text-success"><i className="fa fa-check-circle"></i>Completado</span></td>
-                                        <td><button className="btn btn-primary btn-sm">Descargas</button></td>
+                                        <td><button className="btn btn-danger btn-sm">Eliminar</button></td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
@@ -49,7 +47,7 @@ function Orders(props) {
                                             <p><Link>Flask</Link></p>
                                         </td>
                                         <td>c$500.00</td>
-                                        <td><span className="text-warning"><i className="fa fa-spin fa-spinner"></i> procesando</span></td>
+                                        <td><button className="btn btn-danger btn-sm">Eliminar</button></td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
@@ -58,7 +56,7 @@ function Orders(props) {
                                             <p><Link>ReactJs</Link></p>
                                         </td>
                                         <td>c$500.00</td>
-                                        <td><span className="text-danger"><i className="fa fa-times-circle"></i>cancelado</span></td>
+                                        <td><button className="btn btn-danger btn-sm">Eliminar</button></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -70,4 +68,4 @@ function Orders(props) {
     )
 }
 
-export default Orders
+export default WishList
