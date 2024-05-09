@@ -8,7 +8,7 @@ function Home (){
         <main className="mt-4">
         <div className="container">
           {/* latest product section */}
-          <h3 className="mt-4"> Ultimos Productos <Link to="/product" className="float-end btn btn-dark"> Ver todos los productos{" "}<i className="fa-solid fa-arrow-right-long"></i></Link></h3>
+          <h3 className="mt-4"> Ultimos Productos <Link to="/products" className="float-end btn btn-dark"> Ver todos los productos{" "}<i className="fa-solid fa-arrow-right-long"></i></Link></h3>
 
           <div className="row mb-4">
             <SingleProduct title="Python Product 1 "/>
