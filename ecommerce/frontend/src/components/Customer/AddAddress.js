@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import logo from '../../logo.svg';
 import SideBar from "./SideBar";
 
 function AddAdress() {

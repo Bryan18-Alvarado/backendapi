@@ -6,7 +6,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 
-// components
+// principal components
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
@@ -28,6 +28,8 @@ import Profile from "./components/Customer/Profile";
 import ChangePassword from "./components/Customer/ChangePassword";
 import AddressList from "./components/Customer/AdressList";
 import AddAdress from "./components/Customer/AddAddress";
+
+//route seller
 import SellerLogin from "./components/seller/SellerLogin";
 import SellerRegister from "./components/seller/SellerRegister";
 import SellerDasboard from './components/seller/SellerDashboard'
@@ -35,6 +37,9 @@ import SellerProducts from "./components/seller/SellerProducts";
 import VendorOrders from "./components/seller/VendorOrders";
 import Customer from "./components/seller/Customer";
 import SellerAddProduct from './components/seller/AddProduct'
+import Report from "./components/seller/Report";
+import SellerProfile from "./components/seller/Profile";
+
 function App() {
   return (
     <>
@@ -69,6 +74,8 @@ function App() {
         <Route path="/seller/add-product" element={<SellerAddProduct />} />
         <Route path="/seller/orders" element={<VendorOrders />} />
         <Route path="/seller/customers" element={<Customer />} />
+        <Route path="/seller/reports" element={<Report />} />
+        <Route path="/seller/profile" element={<SellerProfile />} />
 
       </Routes>
       <Footer />

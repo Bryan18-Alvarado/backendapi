@@ -1,5 +1,5 @@
-import logo from '../../logo.svg';
-import { Link } from "react-router-dom";
+// import logo from '../../logo.svg';
+// import { Link } from "react-router-dom";
 import SellerSideBar from './SellerSideBar';
 
 function Customer(props){
