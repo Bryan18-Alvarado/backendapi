@@ -16,7 +16,7 @@ function Header() {
         </button>
         <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
           <Link className="navbar-brand" to="/">
-            Ecommerce
+            PythonSoftware_AB
           </Link>
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li className="nav-item">
@@ -68,6 +68,52 @@ function Header() {
             </li>
 
             {/* End Dropdown */}
+
+            {/* seller panel */}
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Panel Vendedor
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <Link class="dropdown-item" to="/seller/register">
+                    Registro
+                  </Link>
+                </li>
+                <li>
+                  <Link class="dropdown-item" to="/seller/login">
+                    Acceder
+                  </Link>
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <Link class="dropdown-item" to="/seller/dashboard">
+                    Panel de control
+                  </Link>
+                </li>
+                <li>
+                  <Link class="dropdown-item" to="/seller/logout">
+                    Cerrar sesión
+                  </Link>
+                </li>
+              </ul>
+            </li>
+            {/* End seller panel */}
+
+            <li className="nav-item">
+              <Link className="nav-link" to="/checkout">
+                Nuevas Ordenes(4)
+              </Link>
+              </li>
+
             <li className="nav-item">
               <Link className="nav-link" to="/checkout">
                 Mi carrito(4)

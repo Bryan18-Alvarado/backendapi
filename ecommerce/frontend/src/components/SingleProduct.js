@@ -8,8 +8,8 @@ function SingleProduct(props){
           <Link to='/product/python-timer/123'></Link>
           <img src={logo} class="card-img-top" alt="..." />
           <div className="card-body">
-            <h4 className="card-title"><Link to='/product/python-timer/123'>{props.title}</Link></h4>
-            <h5 className="card-title text-muted">Precio: c$500.00</h5>
+            <h4 className="card-title"><Link to='/product/python-timer/123'>{props.product.title}</Link></h4>
+            <h5 className="card-title text-muted">Precio: c$ {props.product.price}</h5>
             {/* <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
               <a href="#" class="btn btn-primary">Go somewhere</a> */}
           <div className="card-footer">

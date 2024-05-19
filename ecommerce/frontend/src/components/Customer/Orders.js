@@ -49,7 +49,7 @@ function Orders(props) {
                                             <p><Link>Flask</Link></p>
                                         </td>
                                         <td>c$500.00</td>
-                                        <td><span className="text-warning"><i className="fa fa-spin fa-spinner"></i>procesando</span></td>
+                                        <td><span className="text-warning"><i className="fa fa-spin fa-spinner"></i> procesando</span></td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
