@@ -11,9 +11,9 @@ function Home() {
         <h3 className="mt-4"> Ultimos Productos <Link to="/products" className="float-end btn btn-dark"> Ver todos los productos{" "}<i className="fa-solid fa-arrow-right-long"></i></Link></h3>
 
         <div className="row mb-4">
-          <SingleProduct title="Python Product 1 " />
-          <SingleProduct title="Python Product 2 " />
-          <SingleProduct title="Python Product 3 " />
+          <SingleProduct title="Python Product 1"  />
+          <SingleProduct title="Python Product 2 "/>
+          <SingleProduct title="Python Product 3 "/>
           <SingleProduct title="Python Product 4 " />
         </div>
 
