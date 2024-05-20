@@ -5,10 +5,11 @@ function SingleProduct(props){
     return (
         <div className="col-12 col-md-3 mb-2">
         <div className="card">
-          <Link to='/product/python-timer/123'></Link>
+          <Link to={`/products/${props.product.title}/${props.product.id}`}>
           <img src={logo} class="card-img-top" alt="..." />
+          </Link>
           <div className="card-body">
-            <h4 className="card-title"><Link to='/product/python-timer/123'>{props.product.title}</Link></h4>
+            <h5 className="card-title"><Link to={`/products/${props.product.title}/${props.product_id}`}>{props.product.title}</Link></h5>
             <h5 className="card-title text-muted">Precio: c$ {props.product.price}</h5>
             {/* <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
               <a href="#" class="btn btn-primary">Go somewhere</a> */}
