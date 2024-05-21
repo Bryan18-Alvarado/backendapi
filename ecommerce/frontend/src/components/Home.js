@@ -4,17 +4,37 @@ import SingleProduct from './SingleProduct';
 
 
 function Home() {
+  const products =[
+    {
+    title: "flask",
+    price: 500.00,
+  },
+    {
+    title: "Python",
+    price: 500.00,
+  },
+    {
+    title: "flutter", 
+    price: 500.00,
+  },
+    {
+    title: "React",
+    price: 500.00,
+  },
+    
+  ];
   return (
-    <main className="mt-4" style={{ backgroundColor: 'blue' }}>
-      <div className="container" style={{ backgroundColor: 'blue' }}>
+
+
+
+    <main className="mt-4">
+      <div className="container" >
         {/* latest product section */}
         <h3 className="mt-4"> Ultimos Productos <Link to="/products" className="float-end btn btn-dark"> Ver todos los productos{" "}<i className="fa-solid fa-arrow-right-long"></i></Link></h3>
 
         <div className="row mb-4">
-          <SingleProduct title="Python Product 1 " />
-          <SingleProduct title="Python Product 2 " />
-          <SingleProduct title="Python Product 3 " />
-          <SingleProduct title="Python Product 4 " />
+        {products.map((product) => 
+          <SingleProduct product={product} />)}
         </div>
 
 
