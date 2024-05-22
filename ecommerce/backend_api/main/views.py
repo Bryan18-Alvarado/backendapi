@@ -13,8 +13,10 @@ class VendorDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = serializers.VendorDetailSerializer
     # permission_classes = [permissions.IsAuthenticated]
     
-
-class ProductCategory(generics.ListAPIView):
+class CategoryList(generics.ListCreateAPIView):
+    queryset= models.ProductCategory.objects.all()
+    serializer_class= serializers.ProductCategorySerializer
+class CategoryDetail(generics.ListAPIView):
     queryset = models.ProductCategory.objects.all()
     serializer_class = serializers.ProductCategorySerializer
     
@@ -30,6 +32,7 @@ class ProductList(generics.ListCreateAPIView):
             category = self.request.GET['category']
             category = models.ProductCategory.objects.get(id=category)
             qs = qs.filter(category=category)
+            
         return qs             
     
 class ProductDetail(generics.RetrieveUpdateDestroyAPIView): 
@@ -73,6 +76,3 @@ class ProductRatingViewSet(viewsets.ModelViewSet):
     queryset = models.ProductRating.objects.all()
     serializer_class= serializers.ProductRatingSerializer
     
-class CategoryList(generics.ListCreateAPIView):
-    queryset= models.ProductCategory.objects.all()
-    serializer_class= serializers.ProductCategorySerializer

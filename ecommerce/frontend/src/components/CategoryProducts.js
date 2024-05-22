@@ -2,6 +2,7 @@ import SingleProduct from './SingleProduct';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+
 function CategoryProducts(props) {
     const baseUrl = "http://127.0.0.1:8000/api"
     const [products, setProducts] = useState([]);
@@ -10,7 +11,7 @@ function CategoryProducts(props) {
     const { category_slug, category_id } = useParams();
 
     useEffect(() => {
-        fetchData(baseUrl + "/products/?category=" + category_id);
+        fetchData(baseUrl+'/products/?category='+category_id);
     }, [category_id]);
 
     function fetchData(baseurl) {
@@ -18,7 +19,7 @@ function CategoryProducts(props) {
             .then((response) => response.json())
             .then((data) => {
                 setProducts(data.data)
-                setTotalResult(data.count);
+                setTotalResult(data.count)
             });
     }
 
@@ -33,7 +34,7 @@ function CategoryProducts(props) {
         links.push(
             <li className="page-item">
                 <Link
-                    onClick={() => changeUrl(baseUrl + `products/?category=${category_id}&page=${i}`)}
+                    onClick={() => changeUrl(baseUrl+`products/?category=${category_id}&page=${i}`)}
                     to={`/category/${category_slug}/${category_id}/?page=${i}`}
                     className="page-link"
                 >
@@ -46,12 +47,9 @@ function CategoryProducts(props) {
     return (
         <section className="container mt-4">
             <h3 className="mb-4">< span className=" text-success"></span> Python Products </h3>
-
             <div className="row mb-4">
-
                 {products.map((product) =>
                     <SingleProduct product={product} />
-
                 )}
 
 
@@ -61,7 +59,7 @@ function CategoryProducts(props) {
 
             {/* pagination */}
             <nav aria-label="Page navigation example">
-                <ul class="pagination">
+                <ul className="pagination">
                     {links}
                 </ul>
             </nav>

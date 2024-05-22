@@ -1,44 +1,67 @@
 import { Link } from "react-router-dom";
 import logo from "../logo.svg";
-import SingleProduct from  "./SingleProduct"
+// import SingleProduct from  "./SingleProduct"
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from 'react';
 
 function ProductDetail(){
-    return <section className="container mt-4">
+    const baseUrl = "http://127.0.0.1:8000/api"
+    const [productData, setProductData] = useState([]);
+    const [productImgs, setProductImgs] = useState([]);
+    //paginacion
+    const { product_slug, product_id } = useParams();
+
+    useEffect(() => {
+        fetchData(baseUrl + "/product/" + product_id);
+    }, []);
+
+    function fetchData(baseurl) {
+        fetch(baseurl)
+            .then((response) => response.json())
+            .then((data) => {
+                setProductData(data.data)
+                setProductImgs(data.data.product_imgs)
+                
+            });
+    }
+
+    console.log(productData.product_imgs);
+    return (<section className="container mt-4">
         <h3 className=" mb-4">Detalle del Producto</h3>
             <div className="row">
 
                 <div className="col-4">
                 <div id="relatedThumbnailSlider" className="carousel slide bg- slide carousel-fade" data-bs-ride="true">
                     <div className="carousel-indicators">
-                        <button type="button" data-bs-target="#relatedThumbnailSlider" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#relatedThumbnailSlider" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#relatedThumbnailSlider" data-bs-slide-to="1" aria-label="Slide 2"></button>
                         <button type="button" data-bs-target="#relatedThumbnailSlider" data-bs-slide-to="2" aria-label="Slide 3"></button>
                     </div>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                           <img src={logo} class="img-thumbnail" alt="..." />
+                    <div className="carousel-inner">
+                        <div className="carousel-item active">
+                           <img src={logo} className="img-thumbnail" alt="..." />
                         </div>
-                        <div class="carousel-item">
-                           <img src={logo} class="img-thumbnail" alt="..." />
+                        <div className="carousel-item">
+                           <img src={logo} className="img-thumbnail" alt="..." />
                         </div>
-                        <div class="carousel-item">
-                           <img src={logo} class="img-thumbnail" alt="..." />
+                        <div className="carousel-item">
+                           <img src={logo} className="img-thumbnail" alt="..." />
                         </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#relatedThumbnailSlider" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
+                    <button className="carousel-control-prev" type="button" data-bs-target="#relatedThumbnailSlider" data-bs-slide="prev">
+                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span className="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#relatedThumbnailSlider" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
+                    <button className="carousel-control-next" type="button" data-bs-target="#relatedThumbnailSlider" data-bs-slide="next">
+                        <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span className="visually-hidden">Next</span>
                     </button>
                     </div>
                 </div>
                 <div className="col-8">
-                    <h4>Product 1</h4>
-                    <p className="text-muted">Precio:$500</p>
-                    <p>Descripción: The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+                    <h3>{productData.title}</h3>
+                    <p className="text-muted">Precio:{productData.price}</p>
+                    <p>{productData.Detail}</p>
                     <button title="Demo" target="_blanck" className="btn btn-dark">
                         <i className="fa-solid fa-cart-plus"></i>Demo
                     </button>
@@ -59,38 +82,39 @@ function ProductDetail(){
             <h3 className="mt-5 mb-3">Productos Relacionados</h3>
             <div id="relatedProductSlider" className="carousel slide bg-light" data-bs-ride="true">
             <div className="carousel-indicators">
-                <button type="button" data-bs-target="#relatedProductSlider" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#relatedProductSlider" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#relatedProductSlider" data-bs-slide-to="1" aria-label="Slide 2"></button>
                 <button type="button" data-bs-target="#relatedProductSlider" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
+            <div className="carousel-inner">
+                <div className="carousel-item active">
                     <div className="row mb-5">
 
-                        <SingleProduct title="Python Product 1 "/>
+                        {/* <SingleProduct title="Python Product 1 "/>
                         <SingleProduct title="Python Product 2 "/>
                         <SingleProduct title="Python Product 3 "/>
-                        <SingleProduct title="Python Product 4 "/>
+                        <SingleProduct title="Python Product 4 "/> */}
                     </div>
                 </div>
-                <div class="carousel-item">
+                <div className="carousel-item">
                 <div className="row mb-5">
-                        <SingleProduct title="Python Product 1 "/>
+                        {/* <SingleProduct title="Python Product 1 "/>
                         <SingleProduct title="Python Product 2 "/>
                         <SingleProduct title="Python Product 3 "/>
-                        <SingleProduct title="Python Product 4 "/>
+                        <SingleProduct title="Python Product 4 "/> */}
                 </div>
                 </div>
-                <div class="carousel-item">
+                <div className="carousel-item">
                 <div className="row mb-5">
-                        <SingleProduct title="Python Product 1 "/>
+                        {/* <SingleProduct title="Python Product 1 "/>
                         <SingleProduct title="Python Product 2 "/>
                         <SingleProduct title="Python Product 3 "/>
-                        <SingleProduct title="Python Product 4 "/>
+                        <SingleProduct title="Python Product 4 "/> */}
                 </div>
                 </div>
             </div>
             </div>
     </section>
+    );
 }
 export default ProductDetail
