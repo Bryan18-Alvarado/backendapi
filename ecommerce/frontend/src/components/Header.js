@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../Context";
 function Header() {
+  const userContext = useContext(UserContext);
+  console.log(userContext)
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-success">
       <div className="container">
@@ -41,16 +45,22 @@ function Header() {
                 Mi cuenta
               </a>
               <ul class="dropdown-menu">
-                <li>
-                  <Link class="dropdown-item" to="/customer/register">
-                    Registro
-                  </Link>
-                </li>
-                <li>
-                  <Link class="dropdown-item" to="/customer/login">
-                    Acceder
-                  </Link>
-                </li>
+                {userContext !== 'true' &&
+                  <>
+                  <li>
+                    <Link class="dropdown-item" to="/customer/register">
+                      Registro
+                    </Link>
+                  </li>
+                  <li>
+                    <Link class="dropdown-item" to="/customer/login">
+                      Acceder
+                    </Link>
+                  </li>
+                  </>
+                }
+                {userContext === 'true' &&
+                <>
                 <li>
                   <hr class="dropdown-divider" />
                 </li>
@@ -64,6 +74,8 @@ function Header() {
                     Cerrar sesión
                   </Link>
                 </li>
+                </>
+              }
               </ul>
             </li>
 

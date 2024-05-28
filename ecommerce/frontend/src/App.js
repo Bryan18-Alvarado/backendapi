@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom"
+import {Routes, Route} from "react-router-dom"
 
 import "./App.css";
 
@@ -6,7 +6,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 
-// principal components
+// components
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
@@ -14,72 +14,82 @@ import Categories from "./components/Categories";
 import CategoryProducts from "./components/CategoryProducts";
 import AllProducts from "./components/AllProducts";
 import ProductDetail from "./components/ProductDetail";
-import Checkout from "./components/Checkout";
-import OrderSuccess from './components/OrderSuccess'
-
-//customer panel
+import Checkout from "./components/Checkaout";
+// customer panel
 import Register from "./components/Customer/Register";
-import Login from "./components/Customer/Login"
+import Login from "./components/Customer/Login";
 import Dashboard from "./components/Customer/Dashboard";
 import Orders from "./components/Customer/Orders";
-import OrderFailure from './components/OrderFailure'
-import WishList from "./components/Customer/Wishlist";
-import Profile from "./components/Customer/Profile";
-import ChangePassword from "./components/Customer/ChangePassword";
-import AddressList from "./components/Customer/AdressList";
-import AddAdress from "./components/Customer/AddAddress";
+import OrderSuccess from "./components/OrderSucces";
+import OrderFailure from "./components/OrderFailure";
+import TagProducts from "./components/TagsProducts";
+import Wishlist from "./components/Customer/Wishlist";
+import Profile from "./components/Seller/Profile";
+import ChangePassword from "./components/Seller/ChangePassword";
+import AddressList from "./components/Seller/AddresList";
+import AddAddress from "./components/Customer/AddAddress";
+import Customer from "./components/Seller/Customer";
+import CustomerLogout from "./components/Customer/CustomerLogout";
 
-//route seller
-import SellerLogin from "./components/seller/SellerLogin";
-import SellerRegister from "./components/seller/SellerRegister";
-import SellerDasboard from './components/seller/SellerDashboard'
-import SellerProducts from "./components/seller/SellerProducts";
-import VendorOrders from "./components/seller/VendorOrders";
-import Customer from "./components/seller/Customer";
-import SellerAddProduct from './components/seller/AddProduct'
-import Report from "./components/seller/Report";
-import SellerProfile from "./components/seller/Profile";
+
+
+// seller pabel
+import SellerRegiter from "./components/Seller/SellerRegister";
+import SellerLogin from "./components/Seller/SellerLogin";
+import SellerDashboard from "./components/Seller/SellerDashboard";
+import SellerProducts from "./components/Seller/SellerProducts";
+import AddProducts from "./components/Seller/AddProducts";
+import VendorOrders from "./components/Seller/VendorOrders";
+
+
+
+
 
 function App() {
   return (
     <>
 
-      <Header />
+      <Header/>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home/>}/>
         <Route path="/products/" element={<AllProducts />} />
         <Route path="/categories/" element={<Categories />} />
         <Route path="/category/:category_slug/:category_id" element={<CategoryProducts />} />
-        <Route path="/product/:product_slug/:product_id" element={<ProductDetail />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/order/success" element={<OrderSuccess />} />
-        <Route path="/order/failure" element={<OrderFailure />} />
+        <Route path="/products/:tag" element={<TagProducts />} />
+        <Route path="/product/:product_slug/:product_id" element={<ProductDetail />} />        <Route path="/checkout/" element={<Checkout/>}/>
+        <Route path="/order/success" element={<OrderSuccess/>}/>
+        <Route path="/order/failure" element={<OrderFailure/>}/>
 
-        {/* Customer Routes */}
-        <Route path="/customer/register" element={<Register />} />
-        <Route path="/customer/login" element={<Login />} />
-        <Route path="/customer/dashboard" element={<Dashboard />} />
-        <Route path="/customer/orders" element={<Orders />} />
-        <Route path="/customer/wishlist" element={<WishList />} />
-        <Route path="/customer/profile" element={<Profile />} />
-        <Route path="/customer/Change-password" element={<ChangePassword />} />
-        <Route path="/customer/addresses" element={<AddressList />} />
-        <Route path="/customer/add-address" element={<AddAdress />} />
+        {/* customer routes */}
+        <Route path="/customer/register" element={<Register/>}/>
+        <Route path="/customer/login" element={<Login/>}/>
+        <Route path="/customer/logout" element={<CustomerLogout/>}/>
+        <Route path="/customer/dashboard" element={<Dashboard/>}/>
+        <Route path="/customer/Orders" element={<Orders/>}/>
+        <Route path="/customer/add-address" element={<AddAddress/>}/>
+        <Route path="/customer/wishlist" element={<Wishlist/>}/>
 
-        {/* seller panel */}
-        <Route path="/seller/login" element={<SellerLogin />} />
-        <Route path="/seller/register" element={<SellerRegister />} />
-        <Route path="/seller/dashboard" element={<SellerDasboard />} />
-        <Route path="/seller/products" element={<SellerProducts />} />
-        <Route path="/seller/add-product" element={<SellerAddProduct />} />
-        <Route path="/seller/orders" element={<VendorOrders />} />
-        <Route path="/seller/customers" element={<Customer />} />
-        <Route path="/seller/reports" element={<Report />} />
-        <Route path="/seller/profile" element={<SellerProfile />} />
+
+
+
+
+        {/* seller routes */}
+        <Route path="/seller/register" element={<SellerRegiter/>}/>
+        <Route path="/seller/login" element={<SellerLogin/>}/>
+        <Route path="/seller/dashboard" element={<SellerDashboard/>}/>
+        <Route path="/seller/products" element={<SellerProducts/>}/>
+        <Route path="/seller/add-product" element={<AddProducts/>}/>
+        <Route path="/seller/orders" element={<VendorOrders/>}/>
+        <Route path="/seller/customers" element={<Customer/>}/>        
+        <Route path="/seller/profile" element={<Profile/>}/>
+        <Route path="/seller/change-password" element={<ChangePassword/>}/>
+        <Route path="/seller/addresses" element={<AddressList/>}/>
+
+        
 
       </Routes>
-      <Footer />
-
+      <Footer/>
+      
     </>
   );
 }

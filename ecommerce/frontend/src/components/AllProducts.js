@@ -1,66 +1,59 @@
 import SingleProduct from "./SingleProduct";
-import { useState, useEffect } from "react"
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 function AllProduct(props) {
-    const baseUrl = "http://127.0.0.1:8000/api"
-    const [products, setProducts] = useState([])
-
-    //pagination
-    const [totalResults, setTotalResults] = useState(0);
+    const baseUrl = "http://127.0.0.1:8000/api";
+    const [products, setProducts] = useState([]); 
+    const [totalResult, setTotalResult] = useState(0);
 
     useEffect(() => {
-        fetchData(baseUrl + "/products")
+        fetchData(baseUrl + "/products");
     }, []);
 
     function fetchData(baseurl) {
-
         fetch(baseurl)
-
             .then((response) => response.json())
-
             .then((data) => {
-
-                setProducts(data.data)
-
-                setTotalResults(data.count);
-            });
+                setProducts(data.results); 
+                setTotalResult(data.count);
+            })
     }
 
-    function changeUrl(baseUrl) {
-        fetchData(baseUrl);
+    function changeUrl(baseurl) {
+        fetchData(baseurl);
     }
 
-    var links = [];
-    var limit = 1;
-    var totalLinks = totalResults / limit;
+    const links = [];
+    const limit = 12;
+    const totalLinks = totalResult / limit;
     for (let i = 1; i <= totalLinks; i++) {
         links.push(
-            <li className="page-item">
-                <a className="page-link" href="#" onClick={() => changeUrl(baseUrl +  `/products?page= ` + i)}>{i}</a>
+            <li className="page-item" key={i}>
+                <Link 
+                    onClick={() => changeUrl(baseUrl + `/products/?page=${i}`)}
+                    to={`/products/?page=${i}`}
+                    className="page-link"
+                >
+                    {i}
+                </Link>
             </li>
         );
     }
 
     return (
         <section className="container mt-4">
-            <h3 className="mb-4">< span className=" text-success"></span> Python Products </h3>
-
+            <h3 className="mb-4">Todos los Productos</h3>
             <div className="row mb-4">
-                {
-                    products.map((product) => (
-                        <SingleProduct product={product} />
-                    ))
-                }
+                {products.map((product) => (
+                    <SingleProduct  product={product} />
+                ))}
             </div>
-
-            {/* pagination */}
             <nav aria-label="Page navigation example">
                 <ul className="pagination">{links}</ul>
             </nav>
-
-            {/* end pagination */}
-
         </section>
-    )
+    );
 }
-export default AllProduct
+
+export default AllProduct;
