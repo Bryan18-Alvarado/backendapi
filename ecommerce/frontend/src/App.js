@@ -14,7 +14,7 @@ import Categories from "./components/Categories";
 import CategoryProducts from "./components/CategoryProducts";
 import AllProducts from "./components/AllProducts";
 import ProductDetail from "./components/ProductDetail";
-import Checkout from "./components/Checkaout";
+import Checkout from "./components/Checkout";
 // customer panel
 import Register from "./components/Customer/Register";
 import Login from "./components/Customer/Login";
@@ -34,7 +34,7 @@ import CustomerLogout from "./components/Customer/CustomerLogout";
 
 
 // seller pabel
-import SellerRegiter from "./components/Seller/SellerRegister";
+import SellerRegister from "./components/Seller/SellerRegister";
 import SellerLogin from "./components/Seller/SellerLogin";
 import SellerDashboard from "./components/Seller/SellerDashboard";
 import SellerProducts from "./components/Seller/SellerProducts";
@@ -43,12 +43,15 @@ import VendorOrders from "./components/Seller/VendorOrders";
 
 
 
-
+import { CartContext } from "./Context";
+import { useState } from "react";
+const checkCart = localStorage.getItem('cartData')
 
 function App() {
+  const [cartData, setCartData] = useState(JSON.parse(checkCart))
   return (
-    <>
 
+    <CartContext.Provider value={{cartData, setCartData}}>
       <Header/>
       <Routes>
         <Route path="/" element={<Home/>}/>
@@ -56,7 +59,8 @@ function App() {
         <Route path="/categories/" element={<Categories />} />
         <Route path="/category/:category_slug/:category_id" element={<CategoryProducts />} />
         <Route path="/products/:tag" element={<TagProducts />} />
-        <Route path="/product/:product_slug/:product_id" element={<ProductDetail />} />        <Route path="/checkout/" element={<Checkout/>}/>
+        <Route path="/product/:product_slug/:product_id" element={<ProductDetail />} />        
+        <Route path="/checkout/" element={<Checkout/>}/>
         <Route path="/order/success" element={<OrderSuccess/>}/>
         <Route path="/order/failure" element={<OrderFailure/>}/>
 
@@ -74,7 +78,7 @@ function App() {
 
 
         {/* seller routes */}
-        <Route path="/seller/register" element={<SellerRegiter/>}/>
+        <Route path="/seller/register" element={<SellerRegister/>}/>
         <Route path="/seller/login" element={<SellerLogin/>}/>
         <Route path="/seller/dashboard" element={<SellerDashboard/>}/>
         <Route path="/seller/products" element={<SellerProducts/>}/>
@@ -90,7 +94,7 @@ function App() {
       </Routes>
       <Footer/>
       
-    </>
+    </CartContext.Provider>
   );
 }
 

@@ -1,7 +1,7 @@
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import RelatedSingleProduct from "./RelatedSingleProduct";
+import { useState, useEffect, useContext } from "react"
+import { userContext, CartContext } from "../Context";
 
 function ProductDetail() {
     const baseUrl = "http://127.0.0.1:8000/api";
@@ -11,11 +11,26 @@ function ProductDetail() {
     const { product_slug, product_id } = useParams();
     const [relatedProducts, setRelatedProducts] = useState([]);
     const [cartbuttonClickStatus, setcartButtonClickStatus] = useState(false);
+    // const [cartbuttonClickStatus, setcartButtonClickStatus] = useState(false);
+    const { cartData, setCartData } = useContext(CartContext);
 
     useEffect(() => {
         fetchData(baseUrl + "/product/" + product_id);
         fetchRelatedData(baseUrl + "/related-products/" + product_id);
+        checkProductInCart(product_id);
     }, []);
+
+    function checkProductInCart(product_id) {
+        var previousCart = localStorage.getItem('cartData');
+        var cartJson = JSON.parse(previousCart);
+        if (cartJson != null) {
+            cartJson.map((cart) => {
+                if (cart != null && cart.product.id == product_id) {
+                    setcartButtonClickStatus(true);
+                }
+            });
+        }
+    }
 
     function fetchData(url) {
         fetch(url)
@@ -51,15 +66,50 @@ function ProductDetail() {
 
     const cartAddButtonHandler = () => {
         var previousCart = localStorage.getItem("cartData"); //continuar desde aqui
+        var cartJson = JSON.parse(previousCart)
+        var cartData = {
+            product: {
+                id: productData.id,
+                title: productData.title,
+                price: productData.price,
+                image: productData.image
+            },
+            user: {
+                id: 1,
+            },
+        };
+        if (cartJson != null) {
+            cartJson.push(cartData);
+            var cartString = JSON.stringify(cartJson);
+            localStorage.setItem("cartData", cartString);
+            setCartData(cartJson);
+
+        } else {
+            var newCartList = [];
+            newCartList.push(cartData);
+            cartString = JSON.stringify(newCartList);
+            localStorage.setItem("cartData", cartString);
+        }
         console.log("Agregado al carrito");
         setcartButtonClickStatus(true);
     };
 
     const cartRemoveButtonHandler = () => {
+        var previousCart = localStorage.getItem("cartData");
+        var cartJson = JSON.parse(previousCart);
+        cartJson.map((cart, index) => { // Add parentheses around cart, index
+            if (cart != null && cart.product.id == productData.id) {
+                // delete cartJson[index];
+                cartJson.splice(index, 1);
+            }
+        });
+        var cartString = JSON.stringify(cartJson);
+        localStorage.setItem("cartData", cartString);
         console.log("Removido del carrito");
         setcartButtonClickStatus(false);
+        setCartData(cartJson);
+
     }
-    // console.log(productData.product_imgs);
 
     return (
         <section className="container mt-4">
@@ -117,7 +167,7 @@ function ProductDetail() {
                         )}
                         {cartbuttonClickStatus && (
                             <button title="Eliminar del carrito" type="button" onClick={cartRemoveButtonHandler} target="_blank" className="btn btn-warning ms-1">
-                                <i class="fa-solid fa-trash"></i> Eliminar del carrito
+                                <i className="fa-solid fa-trash"></i> Eliminar del carrito
                             </button>
                         )}
                         <button title="Comprar ahora" target="_blank" className="btn btn-success ms-1">

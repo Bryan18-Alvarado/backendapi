@@ -1,8 +1,15 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { UserContext } from "../Context";
+import { UserContext, CartContext } from "../Context";
+
 function Header() {
   const userContext = useContext(UserContext);
+  const {cartData, setcartData} = useContext(CartContext);
+  if (cartData.length == null) {
+    var cartItems = 0
+  } else {
+    var cartItems = cartData.length
+  }
   console.log(userContext)
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-success">
@@ -128,7 +135,7 @@ function Header() {
 
             <li className="nav-item">
               <Link className="nav-link" to="/checkout">
-                Mi carrito(4)
+                Mi carrito({cartData ? cartData.length: 0})
               </Link>
             </li>
           </ul>
