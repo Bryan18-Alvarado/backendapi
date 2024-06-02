@@ -37,5 +37,3 @@ urlpatterns = [
 urlpatterns += router.urls
 
 
-    # # # path ('productcategorys/', views.ProductCategoryList.as_view()),
-

@@ -11,7 +11,6 @@ function ProductDetail() {
     const { product_slug, product_id } = useParams();
     const [relatedProducts, setRelatedProducts] = useState([]);
     const [cartbuttonClickStatus, setcartButtonClickStatus] = useState(false);
-    // const [cartbuttonClickStatus, setcartButtonClickStatus] = useState(false);
     const { cartData, setCartData } = useContext(CartContext);
 
     useEffect(() => {
@@ -97,9 +96,8 @@ function ProductDetail() {
     const cartRemoveButtonHandler = () => {
         var previousCart = localStorage.getItem("cartData");
         var cartJson = JSON.parse(previousCart);
-        cartJson.map((cart, index) => { // Add parentheses around cart, index
+        cartJson.map((cart, index) => { 
             if (cart != null && cart.product.id == productData.id) {
-                // delete cartJson[index];
                 cartJson.splice(index, 1);
             }
         });

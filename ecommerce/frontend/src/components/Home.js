@@ -19,52 +19,6 @@ function Home (){
               setTotalResult(data.count);
           })
   }
-
-  // function changeUrl(baseurl) {
-  //     fetchData(baseurl);
-  // }
-
-  // const links = [];
-  // const limit = 1;
-  // const totalLinks = totalResult / limit;
-  // for (let i = 1; i <= totalLinks; i++) {
-  //     links.push(
-  //         <li className="page-item" key={i}>
-  //             <Link 
-  //                 onClick={() => changeUrl(baseUrl + `/products/?page=${i}`)}
-  //                 to={`/products/?page=${i}`}
-  //                 className="page-link"
-  //             >
-  //                 {i}
-  //             </Link>
-  //         </li>
-  //     );
-  // }
-
-
-
-
-// const products=[
-//   {
-//     'title': 'python',
-//     'price': '100'
-//   },
-//   {
-//     'title': 'Django',
-//     'price': '150'
-//   },
-//   {
-//     'title': 'Flask',
-//     'price': '200'
-//   },
-//   {
-//     'title': 'React',
-//     'price': '300'
-//   },
-// ]
-
-
-
     return (
         <main className="mt-4">
         <div className="container">
@@ -90,7 +44,7 @@ function Home (){
             {/* product box */}
             <div className="col-12 col-md-3 mb-2">
               <div className="card">
-                <img src={logo} class="card-img-top" alt="..." />
+                <img src={logo} className="card-img-top" alt="..." />
                 <div className="card-body">
                   <h4 className="card-title">Nombre categoria</h4>
                 </div>
@@ -102,7 +56,7 @@ function Home (){
             {/* product box */}
             <div className="col-12 col-md-3 mb-2">
               <div className="card">
-                <img src={logo} class="card-img-top" alt="..." />
+                <img src={logo} className="card-img-top" alt="..." />
                 <div className="card-body">
                   <h4 className="card-title">Nombre categoria</h4>
                 </div>
@@ -114,7 +68,7 @@ function Home (){
             {/* product box */}
             <div className="col-12 col-md-3 mb-2">
               <div className="card">
-                <img src={logo} class="card-img-top" alt="..." />
+                <img src={logo} className="card-img-top" alt="..." />
                 <div className="card-body">
                   <h4 className="card-title">Nombre categoria</h4>
                 </div>
@@ -126,7 +80,7 @@ function Home (){
             {/* product box */}
             <div className="col-12 col-md-3 mb-2">
               <div className="card">
-                <img src={logo} class="card-img-top" alt="..." />
+                <img src={logo} className="card-img-top" alt="..." />
                 <div className="card-body">
                   <h4 className="card-title">Nombre categoria</h4>
                 </div>
@@ -150,7 +104,7 @@ function Home (){
             {/* product box */}
             <div className="col-12 col-md-3 mb-2">
               <div className="card">
-                <img src={logo} class="card-img-top" alt="..." />
+                <img src={logo} className="card-img-top" alt="..." />
                 <div className="card-body">
                   <h4 className="card-title">Nombre producto</h4>
                   <h5 className="card-title text-muted">Precio: c$500.00</h5>
@@ -166,12 +120,10 @@ function Home (){
             {/* product box */}
             <div className="col-12 col-md-3 mb-2">
               <div className="card">
-                <img src={logo} class="card-img-top" alt="..." />
+                <img src={logo} className="card-img-top" alt="..." />
                 <div className="card-body">
                   <h4 className="card-title">Nombre producto</h4>
                   <h5 className="card-title text-muted">Precio: c$500.00</h5>
-                  {/* <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a> */}
                 </div>
                 <div className="card-footer">
                   <button title="Agregar al carrito" className="btn btn-success btn-sm"> <i className="fa-solid fa-cart-plus"></i> </button>
@@ -184,12 +136,12 @@ function Home (){
             {/* product box */}
             <div className="col-12 col-md-3 mb-2">
               <div className="card">
-                <img src={logo} class="card-img-top" alt="..." />
+                <img src={logo} className="card-img-top" alt="..." />
                 <div className="card-body">
                   <h4 className="card-title">Nombre producto</h4>
                   <h5 className="card-title text-muted">Precio: c$500.00</h5>
-                  {/* <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a> */}
+                  {/* <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" className="btn btn-primary">Go somewhere</a> */}
                 </div>
                 <div className="card-footer">
                   <button title="Agregar al carrito" className="btn btn-success btn-sm"> <i className="fa-solid fa-cart-plus"></i> </button>
@@ -202,12 +154,12 @@ function Home (){
             {/* product box */}
             <div className="col-12 col-md-3 mb-2">
               <div className="card">
-                <img src={logo} class="card-img-top" alt="..." />
+                <img src={logo} className="card-img-top" alt="..." />
                 <div className="card-body">
                   <h4 className="card-title">Nombre producto</h4>
                   <h5 className="card-title text-muted">Precio: c$500.00</h5>
-                  {/* <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a> */}
+                  {/* <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" className="btn btn-primary">Go somewhere</a> */}
                 </div>
                 <div className="card-footer">
                   <button title="Agregar al carrito" className="btn btn-success btn-sm"> <i className="fa-solid fa-cart-plus"></i> </button>
@@ -232,7 +184,7 @@ function Home (){
             {/* product box */}
             <div className="col-12 col-md-3 mb-2">
               <div className="card">
-                <img src={logo} class="card-img-top" alt="..." />
+                <img src={logo} className="card-img-top" alt="..." />
                 <div className="card-body">
                   <h4 className="card-title">Nombre vendedor</h4>
                 </div>
@@ -247,23 +199,7 @@ function Home (){
             {/* product box */}
             <div className="col-12 col-md-3 mb-2">
               <div className="card">
-                <img src={logo} class="card-img-top" alt="..." />
-                <div className="card-body">
-                  <h4 className="card-title">Nombre vendedor</h4>
-                </div>
-                <div className="card-footer">
-                  <div className="card-footer">
-                    categorias: <a href="#">python</a> , <a href="#">Django</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* product box end */}
-
-            {/* product box */}
-            <div className="col-12 col-md-3 mb-2">
-              <div className="card">
-                <img src={logo} class="card-img-top" alt="..." />
+                <img src={logo} className="card-img-top" alt="..." />
                 <div className="card-body">
                   <h4 className="card-title">Nombre vendedor</h4>
                 </div>
@@ -279,7 +215,23 @@ function Home (){
             {/* product box */}
             <div className="col-12 col-md-3 mb-2">
               <div className="card">
-                <img src={logo} class="card-img-top" alt="..." />
+                <img src={logo} className="card-img-top" alt="..." />
+                <div className="card-body">
+                  <h4 className="card-title">Nombre vendedor</h4>
+                </div>
+                <div className="card-footer">
+                  <div className="card-footer">
+                    categorias: <a href="#">python</a> , <a href="#">Django</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* product box end */}
+
+            {/* product box */}
+            <div className="col-12 col-md-3 mb-2">
+              <div className="card">
+                <img src={logo} className="card-img-top" alt="..." />
                 <div className="card-body">
                   <h4 className="card-title">Nombre vendedor</h4>
                 </div>

@@ -4,13 +4,11 @@ import { UserContext, CartContext } from "../Context";
 
 function Header() {
   const userContext = useContext(UserContext);
-  const {cartData, setcartData} = useContext(CartContext);
-  if (cartData.length == null) {
-    var cartItems = 0
-  } else {
-    var cartItems = cartData.length
-  }
+  const { cartData, setcartData } = useContext(CartContext);
+  const cartItems = cartData?.length ?? 0;
+
   console.log(userContext)
+  
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-success">
       <div className="container">
@@ -41,9 +39,9 @@ function Header() {
               </Link>
             </li>
             {/* Dropdown */}
-            <li class="nav-item dropdown">
+            <li className="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle"
+                className="nav-link dropdown-toggle"
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
@@ -51,47 +49,47 @@ function Header() {
               >
                 Mi cuenta
               </a>
-              <ul class="dropdown-menu">
+              <ul className="dropdown-menu">
                 {userContext !== 'true' &&
                   <>
-                  <li>
-                    <Link class="dropdown-item" to="/customer/register">
-                      Registro
-                    </Link>
-                  </li>
-                  <li>
-                    <Link class="dropdown-item" to="/customer/login">
-                      Acceder
-                    </Link>
-                  </li>
+                    <li>
+                      <Link className="dropdown-item" to="/customer/register">
+                        Registro
+                      </Link>
+                    </li>
+                    <li>
+                      <Link className="dropdown-item" to="/customer/login">
+                        Acceder
+                      </Link>
+                    </li>
                   </>
                 }
                 {userContext === 'true' &&
-                <>
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
-                <li>
-                  <Link class="dropdown-item" to="/customer/dashboard">
-                    Panel de control
-                  </Link>
-                </li>
-                <li>
-                  <Link class="dropdown-item" to="/customer/logout">
-                    Cerrar sesión
-                  </Link>
-                </li>
-                </>
-              }
+                  <>
+                    <li>
+                      <hr className="dropdown-divider" />
+                    </li>
+                    <li>
+                      <Link className="dropdown-item" to="/customer/dashboard">
+                        Panel de control
+                      </Link>
+                    </li>
+                    <li>
+                      <Link className="dropdown-item" to="/customer/logout">
+                        Cerrar sesión
+                      </Link>
+                    </li>
+                  </>
+                }
               </ul>
             </li>
 
             {/* End Dropdown */}
 
             {/* seller panel */}
-            <li class="nav-item dropdown">
+            <li className="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle"
+                className="nav-link dropdown-toggle"
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
@@ -99,27 +97,27 @@ function Header() {
               >
                 Panel Vendedor
               </a>
-              <ul class="dropdown-menu">
+              <ul className="dropdown-menu">
                 <li>
-                  <Link class="dropdown-item" to="/seller/register">
+                  <Link className="dropdown-item" to="/seller/register">
                     Registro
                   </Link>
                 </li>
                 <li>
-                  <Link class="dropdown-item" to="/seller/login">
+                  <Link className="dropdown-item" to="/seller/login">
                     Acceder
                   </Link>
                 </li>
                 <li>
-                  <hr class="dropdown-divider" />
+                  <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <Link class="dropdown-item" to="/seller/dashboard">
+                  <Link className="dropdown-item" to="/seller/dashboard">
                     Panel de control
                   </Link>
                 </li>
                 <li>
-                  <Link class="dropdown-item" to="/seller/logout">
+                  <Link className="dropdown-item" to="/seller/logout">
                     Cerrar sesión
                   </Link>
                 </li>
@@ -131,11 +129,11 @@ function Header() {
               <Link className="nav-link" to="/checkout">
                 Nuevas Ordenes(4)
               </Link>
-              </li>
+            </li>
 
             <li className="nav-item">
               <Link className="nav-link" to="/checkout">
-                Mi carrito({cartData ? cartData.length: 0})
+                Mi carrito({cartItems})
               </Link>
             </li>
           </ul>
